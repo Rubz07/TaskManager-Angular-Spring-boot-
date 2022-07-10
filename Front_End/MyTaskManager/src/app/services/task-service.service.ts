@@ -13,19 +13,19 @@ export class TaskService {
     return this.httpClient.get(`${this.baseUrl}`);
   }
 
-  getTaskByIs(id: number): Observable<any> {
+  getTaskById(id: number): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/${id}`);
   }
 
-  createEmployee(task: Object): Observable<Object> {
+  createTask(task: Object): Observable<Object> {
     return this.httpClient.post(`${this.baseUrl}`, task);
   }
 
-  updateEmployee(id: number, value: any): Observable<Object> {
+  updateTask(id: number, value: any): Observable<Object> {
     return this.httpClient.put(`${this.baseUrl}/${id}`, value);
   }
 
-  deleteEmployee(id: number): Observable<any> {
+  deleteTask(id: number): Observable<any> {
     return this.httpClient.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 }

@@ -3,7 +3,9 @@
     <div class="project-info">
       <h1>My Task Manager</h1>
       <div class="project-participants">
-        <button type="button" class="add_task">Create</button>
+        <button type="button" class="add_task" (click)="gotoList()">
+          Create
+        </button>
       </div>
     </div>
     <div class="project-tasks">
@@ -18,7 +20,11 @@
         <div class="task" draggable="true" *ngFor="let task of tasks | async">
           <div class="task__tags">
             <span class="task__tag task__tag--copyright">{{ task.title }}</span>
-            <input type="checkbox" class="task__tag task__tag--copyright" />
+            <input
+              type="checkbox"
+              class="task__tag task__tag--copyright"
+              (click)="statusChange(task.id)"
+            />
           </div>
           <p class="task__description">
             {{ task.description }}
@@ -32,14 +38,16 @@
           <div class="task__status">
             <span
               [ngClass]="
-                task.status === 'completed' ? 'status' : 'status_pending'
+                task.status === 'Completed' ? 'status' : 'status_pending'
               "
               >{{ task.status }}</span
             >
           </div>
           <div class="task_action">
-            <button class="btn_edit">Edit</button>
-            <button class="btn_delete">Delete</button>
+            <button class="btn_edit" (click)="updateTask(task.id)">Edit</button>
+            <button class="btn_delete" (click)="deleteTask(task.id)">
+              Delete
+            </button>
           </div>
         </div>
       </div>
