@@ -25,15 +25,14 @@ task:Tasks;
 
     
   }
-  reloadData(){
-    this.tasks=this.taskService.getTaskList();
-    this.taskCompletd=this.taskService.getTaskListBasedOnStatus();
-  }
-
+  
   gotoList() {
     this.router.navigate(['/add']);
   }
- 
+  updateTask(id: number){
+    this.router.navigate(['update', id]);
+  }
+
   deleteTask(id: number) {
     this.taskService.deleteTask(id)
       .subscribe(
@@ -44,22 +43,24 @@ task:Tasks;
         error => console.log(error));
   }
 
-  updateTask(id: number){
-    this.router.navigate(['update', id]);
-  }
+
 
   statusChange(id:number){
     this.taskService.getTaskById(id)
     .subscribe(data => {
-      console.log(data)
       data.status="Completed"
-      this.taskService.updateTask(id, data).subscribe(data => console.log(data), error => console.log(error));
-      this.task = new Tasks();
-      this.reloadData()
+      this.taskService.updateTask(id, data) .subscribe(
+        data => {
+          console.log(data);
+          this.reloadData();
+        },
+        error => console.log(error));
     }, error => console.log(error));
-
-
-  
   }
 
+
+  reloadData(){
+    this.tasks=this.taskService.getTaskList();
+    this.taskCompletd=this.taskService.getTaskListBasedOnStatus();
+  }
 }

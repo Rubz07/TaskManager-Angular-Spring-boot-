@@ -299,8 +299,8 @@ cursor: pointer;
   color: #fff;
   text-decoration: none;
 }
-         
-       
+
+
          
 .status{
   background-color: #5dc983;
@@ -412,7 +412,7 @@ cursor: pointer;
   color: var(--white);  
 }  
 .task-icon--attachment {  
-  background-color: #fba63c;  
+  background-color: #19ca02;  
 }  
 .task-icon--comment {  
   background-color: #5dc983;  
@@ -462,3 +462,4 @@ cursor: pointer;
        font-size: 25px;  
  }  
 }  
+
