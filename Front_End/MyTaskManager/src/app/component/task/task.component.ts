@@ -15,6 +15,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class TaskComponent implements OnInit {
 tasks:Observable<Tasks[]>;
+taskCompletd:Observable<Tasks[]>;
 task:Tasks;
 
   constructor(private taskService:TaskService,private router: Router) { }
@@ -26,6 +27,7 @@ task:Tasks;
   }
   reloadData(){
     this.tasks=this.taskService.getTaskList();
+    this.taskCompletd=this.taskService.getTaskListBasedOnStatus();
   }
 
   gotoList() {

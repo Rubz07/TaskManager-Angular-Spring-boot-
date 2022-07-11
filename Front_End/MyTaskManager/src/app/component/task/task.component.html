@@ -22,7 +22,11 @@
             <span class="task__tag task__tag--copyright">{{ task.title }}</span>
             <input
               type="checkbox"
-              class="task__tag task__tag--copyright"
+              [ngClass]="
+                task.status === 'Completed'
+                  ? 'statusNone'
+                  : 'task__tag task__tag--copyright'
+              "
               (click)="statusChange(task.id)"
             />
           </div>
@@ -58,40 +62,13 @@
     <div class="task-activity">
       <h2>Task Completed</h2>
       <ul>
-        <li>
+        <li *ngFor="let task of taskCompletd | async">
           <span class="task-icon task-icon--attachment"
             ><i class="fas fa-paperclip"></i
           ></span>
-          <b>Andrea </b>uploaded 3 documents
-          <time datetime="2021-11-24T20:00:00">Aug 10</time>
-        </li>
-        <li>
-          <span class="task-icon task-icon--comment"
-            ><i class="fas fa-comment"></i
-          ></span>
-          <b>Karen </b> left a comment
-          <time datetime="2021-11-24T20:00:00">Aug 10</time>
-        </li>
-        <li>
-          <span class="task-icon task-icon--edit"
-            ><i class="fas fa-pencil-alt"></i
-          ></span>
-          <b>Karen </b>uploaded 3 documents
-          <time datetime="2021-11-24T20:00:00">Aug 11</time>
-        </li>
-        <li>
-          <span class="task-icon task-icon--attachment"
-            ><i class="fas fa-paperclip"></i
-          ></span>
-          <b>Andrea </b>uploaded 3 documents
-          <time datetime="2021-11-24T20:00:00">Aug 11</time>
-        </li>
-        <li>
-          <span class="task-icon task-icon--comment"
-            ><i class="fas fa-comment"></i
-          ></span>
-          <b>Karen </b> left a comment
-          <time datetime="2021-11-24T20:00:00">Aug 12</time>
+          <b>{{ task.title }} </b><br />
+          <p>{{ task.description }}</p>
+          <time datetime="2021-11-24T20:00:00">{{ task.dueDate }}</time>
         </li>
       </ul>
     </div>

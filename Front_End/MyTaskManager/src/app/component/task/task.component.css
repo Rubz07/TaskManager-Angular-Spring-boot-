@@ -44,7 +44,9 @@ h1 {
   justify-content: space-between;  
   align-items: center;  
 }  
-
+.task__tags .statusNone{
+  display: none;
+}
 
 /* CSS */
 .add_task {

@@ -18,6 +18,7 @@ task:Tasks;
     this.taskService.getTaskById(this.id)
     .subscribe(data => {
       console.log(data)
+      data.status="pending"
       this.task = data;
     }, error => console.log(error));
   }

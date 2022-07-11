@@ -13,6 +13,10 @@ export class TaskService {
     return this.httpClient.get(`${this.baseUrl}`);
   }
 
+getTaskListBasedOnStatus():Observable<any>{
+
+  return this.httpClient.get('http://localhost:8080/api/v1/taskStatus')
+}
   getTaskById(id: number): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/${id}`);
   }
